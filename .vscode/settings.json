@@ -1,0 +1,12 @@
+{
+  "python.formatting.provider": "black",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#BE3B37",
+    "titleBar.activeBackground": "#BE3B37",
+    "titleBar.inactiveBackground": "#BE3B37",
+    "statusBar.foreground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "TW1TT3R_FLASK_BACKEND"
+}
