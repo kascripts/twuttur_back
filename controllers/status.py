@@ -40,6 +40,7 @@ def get_single_status(status_id):
 
 
 @router.route("/status", methods=["POST"])
+@secure_route
 def create_status():
     status_dictionary = request.json
     
