@@ -13,11 +13,11 @@ class StatusModel(db.Model, BaseModel):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
-    # comment = db.Column(db.Text, nullable=False, unique=False) // make a connection between comments and status = like the teas file
+    # comment = db.Column(db.Text, nullable=False, unique=False) #!// make a connection between comments and status = like the teas file
 
     user = db.relationship('UserModel', backref='users')
     
-    comment = db.relationship('CommentModel', backref='comment', cascade="all, delete")
+    comments = db.relationship('CommentModel', backref='comments', cascade="all, delete")
     
     # likes = db.relationship('LikesModel', backref='likes', secondary=status_like)
     

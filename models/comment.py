@@ -4,7 +4,7 @@ from models.base import BaseModel
 
 class CommentModel(db.Model, BaseModel):
     
-    __tablename__ = "comment"
+    __tablename__ = "comments"
     
     content = db.Column(db.Text, nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey("status.id", ondelete="CASCADE"), nullable=False)

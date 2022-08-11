@@ -47,14 +47,12 @@ def create_status():
     try:
         status = status_schema.load(status_dictionary)
     except ValidationError as e:
-        return {"errors": e.messages, "message": "Something went wrong"}
-    
-    
+        return {"errors": e.messages, "message": "Something went wrong"}  
     
     status.user_id = g.current_user.id
     status.save()
-    
-    return status_schema.jsonify(status), HTTPStatus.CREATED
+    all_status = StatusModel.query.all()
+    return status_schema.jsonify(all_status, many=True), HTTPStatus.CREATED
 
 
 @router.route("/status/<int:status_id>", methods=["DELETE"])
@@ -64,6 +62,9 @@ def remove_status(status_id):
     
     if not status:
         return {"message": "Status not found"}, HTTPStatus.NOT_FOUND
+    
+    if not status.user_id == g.current_user.id:
+        return {"message": "Blocked"}, HTTPStatus.UNAUTHORIZED
     
     status.remove()
     
