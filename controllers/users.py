@@ -10,15 +10,17 @@ router = Blueprint("users", __name__)
 
 @router.route('/register', methods=["POST"])
 def register():
+    print(request.json)
     try:
         user_dictionary = request.json
         user = user_schema.load(user_dictionary)
         user.save()
         return user_schema.jsonify(user)
     except ValidationError as e:
-        return {"errors": e.messages, "messages": "Something went wrong"}
+        return {"errors": e.messages, "messages": "Something went wrong2"}
     except Exception as e:
-        return { "messages": "Something went wrong"}
+        print(e)
+        return { "messages": "Something went wrong7"}
     
     
 @router.route('/login', methods=["POST"])
